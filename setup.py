@@ -19,7 +19,7 @@ setup(
             'redsys'
         ],
         install_requires=[
-            'pycrypto'
+            'pycryptodome'
         ],
         packages=PACKAGES,
         scripts=[],
