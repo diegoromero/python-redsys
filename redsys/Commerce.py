@@ -21,7 +21,8 @@ class Commerce:
         decoded_secret_key = base64.standard_b64decode(self.secret_key)
         cipher = DES3.new(decoded_secret_key, DES3.MODE_CBC, IV=b'\0\0\0\0\0\0\0\0')
         # adjust Ds_Merchant_Order size to multiple of 8
-        order = order.ljust(16, '\0')
+        order = order.encode('utf-8')  # Encode the order string to bytes
+        order = order.ljust(16, b'\0')
         return cipher.encrypt(order)
 
     def generate_form(self, transaction):
